@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 itemsAdapter.notifyDataSetChanged();
                 // Store the updated list
                 writeItems();
-                // Log the system change
-//                Log.i("Main Activity", "Removed item " + position);
                 // Return true to tell the framework the long click was consumed
                 return true;
             }
@@ -91,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                 // Put extras into the bundle for access in the edit activity
                 i.putExtra(ITEM_TEXT, items.get(position));
                 i.putExtra(ITEM_POSITION, position);
-                Toast.makeText(getApplicationContext(), "position " + position, Toast.LENGTH_LONG).show();
                 // Brings up the edit activity with the expectation of a result
                 startActivityForResult(i, EDIT_REQUEST_CODE);
             }
