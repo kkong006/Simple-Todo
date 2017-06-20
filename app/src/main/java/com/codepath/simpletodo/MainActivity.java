@@ -1,5 +1,6 @@
 package com.codepath.simpletodo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,13 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Numeric code to identify the edit activity
+    public static final int EDIT_REQUEST_CODE = 20;
+
+    // Keys used for passing data between activities
+    public static final String ITEM_TEXT = "itemText";
+    public static final String ITEM_POSITION = "itemPosition";
 
     // Declaring stateful objects here; these will be null before onCreate is called
     ArrayList<String> items; // List of items to display
@@ -36,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         // Wire the adapter to the view
         lvItems.setAdapter(itemsAdapter);
-
-        // Add some mock items to the list
-//        items.add("First todo item");
-//        items.add("Next todo");
 
         // Set up the listener on creation
         setupListViewListener();
@@ -78,6 +82,20 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // Parameters: this context, class of activity to launch
+                Intent i = new Intent(MainActivity.this, EditItemActivity.class);
+                // Put extras into the bundle for access in the edit activity
+                i.putExtra(ITEM_TEXT, items.get(position));
+                i.putExtra(ITEM_POSITION, position);
+                Toast.makeText(getApplicationContext(), "position " + position, Toast.LENGTH_LONG).show();
+                // Brings up the edit activity with the expectation of a result
+                startActivityForResult(i, EDIT_REQUEST_CODE);
+            }
+        });
     }
 
     // Returns the file in which the data is stored
@@ -106,6 +124,24 @@ public class MainActivity extends AppCompatActivity {
         } catch(IOException e) {
             // Print the error to the console
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // EDIT_REQUEST_CODE defined with constants
+        if(resultCode == RESULT_OK && requestCode == EDIT_REQUEST_CODE) {
+            // Extract updated item value from result extras
+            String updatedItem = data.getExtras().getString(ITEM_TEXT);
+            // Get the position of the item which was edited
+            int position = data.getExtras().getInt(ITEM_POSITION, 0);
+            // Update model with new item text at edited position
+            items.set(position, updatedItem);
+            // Notify the adapter of model change
+            itemsAdapter.notifyDataSetChanged();
+            // Notify the user the operation completed
+            Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
         }
     }
 }
