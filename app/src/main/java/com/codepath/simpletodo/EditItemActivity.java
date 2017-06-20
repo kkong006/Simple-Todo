@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import static com.codepath.simpletodo.MainActivity.ITEM_POSITION;
 import static com.codepath.simpletodo.MainActivity.ITEM_TEXT;
@@ -27,7 +26,6 @@ public class EditItemActivity extends AppCompatActivity {
         etItemText.setText(getIntent().getStringExtra(ITEM_TEXT));
         // Track the position of the item in the list
         position = getIntent().getIntExtra(ITEM_POSITION, 0);
-        Toast.makeText(this, "item position " + position, Toast.LENGTH_LONG).show();
         // Set the title bar to reflect purpose of the view
         getSupportActionBar().setTitle("Edit Item");
     }

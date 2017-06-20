@@ -22,9 +22,8 @@
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/etItemText"
         android:onClick="onSaveItem"
-        android:text="Save" />
+        android:text="Save"
+        android:layout_below="@+id/etItemText"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
