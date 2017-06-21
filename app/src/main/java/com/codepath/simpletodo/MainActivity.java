@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
             items.set(position, updatedItem);
             // Notify the adapter of model change
             itemsAdapter.notifyDataSetChanged();
+            // Store the updated list
+            writeItems();
             // Notify the user the operation completed
             Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
         }
