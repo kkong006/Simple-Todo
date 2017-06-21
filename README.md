@@ -32,7 +32,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Downloading Android Studio and the required packages took several hours. Learning to use LiceCap was also a challenge, as I had never used a screen recorder before. The project itself went smoothly, but I wish I had more time to build a custom ListAdapter for the todo list items.
+Downloading Android Studio and the required packages took several hours. Learning to use LiceCap was also a challenge, as I had never used a screen recorder before. The project itself went smoothly, but I wish I had more time to build a custom ListAdapter for the todo list items and add additional features.
 
 ## License
 
