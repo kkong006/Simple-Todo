@@ -20,7 +20,6 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
 * [x] Change theme colors and icons.
 
 ## Video Walkthrough
@@ -33,7 +32,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Downloading Android Studio and the required packages took several hours. Learning to use LiceCap was also a challenge, as I had never used a screen recorder before. The project itself went smoothly, but I wish I had more time to build a custom ListAdapter for the todo list items.
 
 ## License
 
